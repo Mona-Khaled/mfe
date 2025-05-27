@@ -1,0 +1,3 @@
+node_modules
+# when we run webpack to build the project, it creates a dist directory, no need to commit it to github/git
+dist 

@@ -1,3 +1,5 @@
+const HtmlWebpackPlugin = require("html-webpack-plugin"); // injects some script tags inside our html
+
 module.exports = {
   module: {
     // define loaders that tells webpack to process some files as we import them into the project
@@ -20,4 +22,10 @@ module.exports = {
       },
     ],
   },
+  // moved here to be merged/used in both dev and prod mode
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: "./public/index.html",
+    }),
+  ],
 };

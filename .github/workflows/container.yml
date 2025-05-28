@@ -19,8 +19,9 @@ jobs:
       - run: npm install # installing dependencies into our project
       - run: npm run build # run webpack build process, then generate the dist directory
       # after we build the project, we want to deploy all these built files off to Amazon S3, using AWS CLI that gives us programmatic access to Amazon Web Services
-      - uses: chrislennon/actions-aws-cli@v1.1 # getting access to the AWS CLI
+      - uses: shinyinc/action-aws-cli@v1.2 # getting access to the AWS CLI
       - run: aws s3 sync dist s3://${{secrets.AWS_S3_BUCKET_NAME}}/container/latest # use CLI to run a command, sync the contents of the dist directory which is the output from the build step with an S3 bucket (a place we can store files on AWS)
         env:
-          AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
-          AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: ""

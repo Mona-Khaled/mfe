@@ -11,7 +11,7 @@ defaults:
   run:
     working-directory: packages/container
 
-jobs:
+jobs: 
   build: # will make one single job to build and then deploy the app
     runs-on: ubuntu-latest # the virtual machine created by Github
     steps: # the actual commands to be executed
